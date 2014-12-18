@@ -1,0 +1,19 @@
+request:
+  url: book_explicit
+  type: get
+  query_explicit: true
+  query:
+    author: "bharathi"
+    name: "doni"
+response:
+  body:  '{
+    "title": "independance",
+    "category": {
+      "age_group": "10",
+      "genre": "action",
+      "publisher": {
+        "name": "summa",
+        "place":"erode"
+      }
+    }
+  }'

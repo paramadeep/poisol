@@ -1,0 +1,6 @@
+pkg
+coverage
+log
+*.swp
+*.swo
+

@@ -1,0 +1,9 @@
+request:
+  url: column
+  type: get
+response:
+  array_type: column
+  body: '{
+    "title": "independance",
+    "category": "10"
+  }'

@@ -1,0 +1,5 @@
+request:
+  url: simple_response
+  type: get
+response:
+  body: '{"a":1,"b":2}'

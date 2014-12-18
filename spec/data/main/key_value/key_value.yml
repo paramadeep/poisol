@@ -1,0 +1,8 @@
+request:
+  url: keyvalue
+  type: post
+  body:
+    name: "sea"
+    age: 10
+response:
+  body: '{"hi": 1}'

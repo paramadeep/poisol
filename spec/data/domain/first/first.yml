@@ -1,0 +1,7 @@
+request:
+  url: first
+  type: get
+response:
+  body:  '{
+    "title": "1"
+  }'

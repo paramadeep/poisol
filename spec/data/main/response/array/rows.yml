@@ -1,0 +1,11 @@
+request:
+  url: row
+  type: get
+response:
+  array_type: row 
+  body:  '{
+    "title": "independance",
+    "category": {
+      "age_group": "10"
+    }
+  }'

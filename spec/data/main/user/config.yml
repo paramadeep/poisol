@@ -1,0 +1,3 @@
+request:
+  url: users
+  type: post

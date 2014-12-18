@@ -1,0 +1,5 @@
+request:
+  url: 'cda/{name|cd}/{actor|ragavan}/get'
+  type: get
+response:
+  body: '{"hi": 1}'

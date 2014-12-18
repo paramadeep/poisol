@@ -1,0 +1,13 @@
+request:
+  url: nested_array
+  type: get
+response:
+  body:  '{
+    "title": "ind",
+    "roles": [
+      {
+       "role_id": "chumma",
+       "role_name": "sol"
+      }
+    ]    
+  }'
