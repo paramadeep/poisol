@@ -22,13 +22,24 @@ module ResponseBodyBuilder
       actual_field_value = field[1]
       is_array = (actual_field_value.class.to_s == "Array")
       actual_field_value = actual_field_value[0] if is_array
-      method_name = is_array ? ("with_#{field_name.classify.underscore}") : ("with_#{field_name.underscore}")
+      method_name = "with_#{field_name.underscore}"
       define_method(method_name) do |*input_value|
         input_value = input_value[0]
         assignment_value = get_assignment_value actual_field_value,input_value
-        @response.body.last[field_name] = is_array ? (@response.body.last[field_name] << assignment_value) :  assignment_value
+        @response.body.last[field_name] =  assignment_value
         self
       end
+
+      if is_array
+        method_name = "with_#{field_name.classify.underscore}"
+        define_method(method_name) do |*input_value|
+          input_value = input_value[0]
+          assignment_value = get_assignment_value actual_field_value,input_value
+          @response.body.last[field_name] = @response.body.last[field_name] << assignment_value
+          self
+        end
+      end
+
     end
   end
 
