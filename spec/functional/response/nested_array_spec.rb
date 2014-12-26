@@ -30,4 +30,10 @@ describe Stub, "#nested array" do
     expect(response.body).to eq({"title"=>"ind", "roles"=>[{"role_id"=>"chumma", "role_name"=>"sol"},{"role_id"=>"test", "role_name"=>"sol"}]}.to_json)
   end
 
+  it "passing array of hashes" do
+    NestedArray.new.has_roles([{:role_id=>"test"},{:role_name=>"bla"}]).build()
+    response = RestClient.get "http://localhost:80/nested_array"
+    expect(response.body).to eq({"title"=>"ind", "roles"=>[{"role_id"=>"test", "role_name"=>"sol"},{"role_id"=>"chumma", "role_name"=>"bla"}]}.to_json)
+  end
+
 end

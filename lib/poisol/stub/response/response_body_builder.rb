@@ -86,6 +86,19 @@ module ResponseBodyBuilder
 
   def generate_method_to_alter_response_field_array field_name,actual_field_values
     actual_field_value = actual_field_values[0] 
+
+    method_name = "has_#{field_name.underscore}" 
+    define_method(method_name) do |*input_value|
+      @response.body[field_name]  = []
+      input_hashes = input_value[0]
+      input_hashes.each do |input_hash|
+        assignment_value = get_assignment_value stub_config.response.body[field_name][0].deep_dup,input_hash.stringify_keys
+        @response.body[field_name] << assignment_value
+      end
+      self
+    end
+
+
     method_name = "has_#{field_name.classify.underscore}" 
     define_method(method_name) do |*input_value|
       input_value = input_value[0]
