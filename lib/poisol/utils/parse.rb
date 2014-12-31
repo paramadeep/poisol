@@ -6,6 +6,7 @@ module Parse
   end 
 
   def yaml_file file_name
+    require 'yaml'
     YAML.load_file(file_name)
   end
 

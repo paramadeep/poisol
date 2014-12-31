@@ -1,7 +1,5 @@
 require "rspec/expectations"
 require 'rest_client'
-require 'webmock'
-include WebMock::API
 
 require_relative '../lib/poisol'
 require 'pry'
@@ -16,15 +14,18 @@ SimpleCov.start
 RSpec.configure do |config|
 
   config.before(:each) do
-    WebMock.reset!
+    Poisol.reset
   end
 
   config.before(:suite) do
-    WebMock.disable_net_connect!
-    factory = StubFactory.new.build("spec/data/main")
-    factory = StubFactory.new.build("spec/data/domain/first/")
-    factory = StubFactory.new.build("spec/data/domain/second/")
+    Poisol.start
+    Poisol.load "spec/data/main/"
+    Poisol.load "spec/data/domain/first/"
+    Poisol.load "spec/data/domain/second/"
+  end
+
+  config.after(:suite) do
+    Poisol.stop
   end
 
 end
-

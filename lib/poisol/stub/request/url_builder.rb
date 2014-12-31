@@ -8,7 +8,7 @@ module UrlBuilder
       method_name = "of_#{param_name.underscore}"
       define_method(method_name) do |*input_value|
         input_value = input_value[0]
-        @request.url.sub!("{#{path_param}}","{#{param_name}|#{input_value}}") unless input_value.blank?
+        @request.path.sub!("{#{path_param}}","{#{param_name}|#{input_value}}") unless input_value.blank?
           self
       end
     end

@@ -1,7 +1,7 @@
 Gem::Specification.new do |s|
   s.name = 'poisol'
-  s.version = '0.0.17'
-  s.date = '2014-12-26'
+  s.version = '0.1.0'
+  s.date = '2015-01-01'
   s.summary = 'Generate builders for http stubs'
   s.description = "Generate builders for http stubs"
   s.authors = ["Deepak"]
@@ -14,7 +14,7 @@ Gem::Specification.new do |s|
   s.add_development_dependency 'pry'
   s.add_development_dependency 'rubygems-tasks'
   s.add_development_dependency 'simplecov'
-  s.add_development_dependency'webmock'
+  s.add_development_dependency 'webrick'
   s.add_development_dependency'rest-client'
   s.add_development_dependency 'activesupport'
 end

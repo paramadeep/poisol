@@ -1,9 +1,9 @@
-require_relative "webmock_stub_builder"
+require_relative "webrick_stub_builder"
 require_relative "stub_class_builder"
 require_relative "stub_instance"
 
 class Stub
-  include WebMockStubBuilder
+  include WebrickStubBuilder
   include StubInstance
   attr_accessor :request,:response
   class << self
@@ -20,11 +20,11 @@ class Stub
 end
 
 class Request 
-  attr_accessor :url,:query,:body
+  attr_accessor :url,:query,:body,:path,:type
 end
 
 class Response 
-  attr_accessor :body,:status
+  attr_accessor :body,:status,:header
 end
 
 

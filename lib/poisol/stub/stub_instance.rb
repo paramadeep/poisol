@@ -6,7 +6,7 @@ module StubInstance
 
   def init_request
     @request = Request.new
-    @request.url = stub_config.request.url.deep_dup
+    @request.path = stub_config.request.url.deep_dup
     @request.query = stub_config.request.query_explicit ? {} : stub_config.request.query.deep_dup
     @request.body = stub_config.request.body_explicit ? {} : stub_config.request.body.deep_dup
   end
@@ -19,6 +19,7 @@ module StubInstance
       @response.body = stub_config.response.body.deep_dup
     end
     @response.status = 200
+    @response.header = {'Content-Type' => 'application/json'}
   end
 
   def set_dumb_response response_file
