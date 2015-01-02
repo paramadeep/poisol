@@ -10,19 +10,19 @@ class PoisolLog
     end
 
     def error message
-      logger.error "#{message}\n"
+      logger.error "#{message}"
     end
 
     def info message
-      logger.info "#{message}\n"
+      logger.info "#{message}"
     end
 
     def warn message
-      logger.warn "#{message}\n"
+      logger.warn "#{message}"
     end
 
     def debug message
-      logger.debug "#{message}\n"
+      logger.debug "#{message}"
     end
 
   end

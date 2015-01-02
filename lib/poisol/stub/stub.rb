@@ -21,6 +21,11 @@ end
 
 class Request 
   attr_accessor :url,:query,:body,:path,:type
+
+  def to_s
+   "#{self.type} #{self.url} #{"Query:#{self.query}" if self.query.present?} #{"\nBody: #{self.body}" if self.body.present?} "
+  end
+
 end
 
 class Response 

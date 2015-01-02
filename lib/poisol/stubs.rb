@@ -1,6 +1,10 @@
 module Stubs
   extend self
 
+  def all
+    @stubs
+  end
+
   def add stub 
     @stubs = [] if @stubs.blank?
     @stubs << stub 
@@ -35,9 +39,8 @@ module Stubs
   end
 
   def load_as_json input
-    require 'json'
     begin
-      return JSON.parse input
+      return Parse.json_to_hash input
     rescue
       return input
     end

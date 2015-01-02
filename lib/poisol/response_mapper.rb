@@ -3,6 +3,7 @@ module ResponseMapper
 
   def map webrick_request
     stub_request = get_stub_request webrick_request
+    PoisolLog.info stub_request.to_s
     stub_response = get_stub_response stub_request
   end
 
@@ -19,7 +20,11 @@ module ResponseMapper
 
   def get_stub_response stub_request
     stub = Stubs.get_match stub_request
-    raise "no match found for request \n #{stub_request.type} \n #{stub_request.url} \n #{stub_request.query} \n #{stub_request.body} " if stub.blank?
+    if stub.blank?
+      PoisolLog.error "^^^^^^^^^^^^\nNo match found for above request"
+      PoisolLog.error "Registered requests are #{Stubs.all.map{|stub| "#{stub.request.to_s}\n"}.join}"
+      raise "No match found for request: #{stub_request.to_s} "
+    end
     return stub.response if stub.present?
   end
 
