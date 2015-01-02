@@ -7,4 +7,4 @@ rvm:
   - jruby-19mode
 script:
   - bundle exec rake spec
-after_failure: "cat /home/travis/builds/poisol/log/poisol_stub.log; cat /home/travis/builds/poisol/log/poisol_webrick.log;"
+after_failure: "cat /home/travis/build/paramadeep/poisol/log/poisol_stub.log; cat /home/travis/build/paramadeep/poisol/log/poisol_webrick.log;"
