@@ -1,4 +1,4 @@
-describe Stub, "#array" do
+describe Poisol::Stub, "#array" do
 
   it "empty column array" do
     Columns.new.build

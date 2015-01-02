@@ -1,3 +1,4 @@
+module Poisol 
 module ResponseBodyBuilder
 
   def prepare_response_body
@@ -133,4 +134,5 @@ module ResponseBodyBuilder
   end
 
 
+end
 end

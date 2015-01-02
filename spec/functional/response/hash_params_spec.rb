@@ -1,4 +1,4 @@
-describe StubInstance, "hash params" do
+describe Poisol::StubInstance, "hash params" do
   it "default" do
     SimpleResponse.new.build
     response = RestClient.get "http://localhost:3030/simple_response"

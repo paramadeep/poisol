@@ -1,4 +1,4 @@
-describe Stub, "#multi domain" do
+describe Poisol::Stub, "#multi domain" do
 
   it "support multi domain" do
     First.new.build

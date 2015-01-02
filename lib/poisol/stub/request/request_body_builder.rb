@@ -1,3 +1,4 @@
+module Poisol 
 module RequestBodyBuilder
 
   def prepare_request_body
@@ -109,4 +110,5 @@ module RequestBodyBuilder
   end
 
 
+end
 end

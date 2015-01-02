@@ -1,4 +1,5 @@
-module QueryBuilder
+module Poisol 
+  module QueryBuilder
     def generate_query_methods
       query = @stub_config.request.query 
       query.each do |field|
@@ -9,4 +10,5 @@ module QueryBuilder
         end
       end
     end
+  end
 end

@@ -1,4 +1,4 @@
-describe Stub, "#post_user" do
+describe Poisol::Stub, "#post_user" do
 
   it "default request and response" do
     User.new.build()
@@ -15,4 +15,3 @@ describe Stub, "#post_user" do
   end
 
 end
-

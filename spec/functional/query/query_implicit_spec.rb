@@ -1,4 +1,4 @@
-describe Stub, "#implicit query params" do
+describe Poisol::Stub, "#implicit query params" do
 
   it "dynamic response" do
     Book.new.for_author("bha").has_category({"age_group"=>"11", "publisher"=>{"name"=>"oxford"}}).build()

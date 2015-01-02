@@ -1,4 +1,4 @@
-describe Stub, "#query_explicit" do
+describe Poisol::Stub, "#query_explicit" do
 
   it "partial" do
     BookExplicit.new.for_author('bha').build()

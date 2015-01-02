@@ -1,4 +1,4 @@
-describe Stub, "#nested array" do
+describe Poisol::Stub, "#nested array" do
 
   it "empty" do
     NestedArray.new.has_no_role.build()

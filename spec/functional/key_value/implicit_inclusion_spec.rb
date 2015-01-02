@@ -1,4 +1,4 @@
-describe Stub, "#key_value" do
+describe Poisol::Stub, "#key_value" do
 
   it "default request" do
     KeyValue.new.build()

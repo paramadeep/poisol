@@ -1,4 +1,4 @@
-describe Stub, "#url" do
+describe Poisol::Stub, "#url" do
 
   it "default" do
     Url.new.build()
