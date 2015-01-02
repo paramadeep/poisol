@@ -14,7 +14,7 @@ SimpleCov.start
 RSpec.configure do |config|
 
   config.before(:each) do
-    Poisol.reset
+    Poisol.reset_data
   end
 
   config.before(:suite) do
