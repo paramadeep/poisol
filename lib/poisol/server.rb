@@ -8,6 +8,7 @@ module Server
     attach_shutdown
     attach_request_handling
     Thread.new{@server.start}
+    PoisolLog.info "Server Started as http://localhost:#{port}"
   end
 
   def base_url
@@ -40,7 +41,10 @@ module Server
   end
 
   def stop 
-    @server.shutdown
+    if @server.present?
+      @server.shutdown 
+      PoisolLog.info "Server is shutdown"
+    end
   end
 
 end
