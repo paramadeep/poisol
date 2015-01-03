@@ -16,8 +16,8 @@ module Poisol
 
     def init_response
       @response = Response.new
-      if stub_config.response.is_column_array or stub_config.response.is_row_array 
-        @response.body = []
+      if  stub_config.response.is_column_array or stub_config.response.is_row_array 
+        @response.body = [stub_config.response.body.deep_dup] 
       else
         @response.body = stub_config.response.body.deep_dup
       end

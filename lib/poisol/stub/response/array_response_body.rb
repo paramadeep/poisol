@@ -12,10 +12,13 @@ module Poisol
       class_name = self.name.classify.underscore
       method_name = "has_#{class_name}"
       define_method(method_name) do |*input_value|
-        if input_value.blank?
-          @response.body << stub_config.response.body.deep_dup 
+        assignment_value = input_value.blank? ? 
+          stub_config.response.body.deep_dup : 
+          (stub_config.response.body.deep_dup).deep_merge!(input_value[0].stringify_keys)
+        if is_called_before?
+          @response.body << assignment_value
         else
-          @response.body << (stub_config.response.body.deep_dup).deep_merge!(input_value[0].stringify_keys)
+          @response.body = [assignment_value]
         end
         self
       end
@@ -25,6 +28,7 @@ module Poisol
       class_name = self.name.underscore
       method_name = "has_#{class_name}"
       define_method(method_name) do |*input_value|
+        @response.body = []
         input_hashes = input_value[0]
         input_hashes.each do |input_hash|
           @response.body << (stub_config.response.body.deep_dup).deep_merge!(input_hash.stringify_keys)

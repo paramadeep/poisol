@@ -1,9 +1,9 @@
 describe Poisol::Stub, "#array" do
 
-  it "empty column array" do
+  it "default column array" do
     Columns.new.build
     response = RestClient.get "http://localhost:3030/column"
-    expect(response.body).to eq("[]")
+    expect(response.body).to eq({"title"=>["independance"], "category"=>["10"]}.to_json)
   end
 
   it "column array" do
@@ -24,10 +24,10 @@ describe Poisol::Stub, "#array" do
     expect(response.body).to eq({"title"=>["abc", "c"], "category"=>["10","1"]}.to_json)
   end
 
-  it "empty row array" do
+  it "default row array" do
     Rows.new.build
     response = RestClient.get "http://localhost:3030/row"
-    expect(response.body).to eq("[]")
+    expect(response.body).to eq([{"title"=>"independance","items"=> [1,2],"category"=>{"age_group"=>"10"}}].to_json)
   end
 
   it "row array" do
