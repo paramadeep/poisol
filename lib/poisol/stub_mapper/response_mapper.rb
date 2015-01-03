@@ -22,8 +22,8 @@ module Poisol
     def get_stub_response stub_request
       stub = Stubs.get_match stub_request
       if stub.blank?
-        PoisolLog.error "^^^^^^^^^^^^\nNo match found for above request"
-        PoisolLog.error "Registered requests are #{Stubs.all.map{|stub| "#{stub.request.to_s}\n"}.join}"
+        PoisolLog.error "^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^No match found for above request"
+        PoisolLog.error "Registered requests are: #{Stubs.all.map{|stub| "\n#{stub.request.to_s}"}.join}\n--end--"
         raise "No match found for request: #{stub_request.to_s} "
       end
       return stub.response if stub.present?
