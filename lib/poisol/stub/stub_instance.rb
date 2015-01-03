@@ -3,6 +3,7 @@ module Poisol
     def initialize
       init_request
       init_response
+      @methods_called = []
     end
 
     def init_request
@@ -57,6 +58,17 @@ module Poisol
     def  status input
       @response.status = input
       self
+    end
+
+    def is_called_before?
+      calling_method = caller[0]
+      is_called = @methods_called.include? calling_method
+      if is_called
+        return true
+      else
+        @omethods_called = @methods_called << calling_method
+        return false
+      end
     end
 
   end
