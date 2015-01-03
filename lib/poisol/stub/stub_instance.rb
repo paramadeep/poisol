@@ -3,7 +3,7 @@ module Poisol
     def initialize
       init_request
       init_response
-      @methods_called = []
+      @called_methods = []
     end
 
     def init_request
@@ -50,6 +50,11 @@ module Poisol
       self
     end
 
+    def is_empty
+      @response.body = stub_config.response.is_column_array or stub_config.response.is_row_array ? [] : {}
+      self
+    end
+
     def  for input_hash
       @request.query.deep_merge! input_hash.camelize_keys
       self
@@ -60,16 +65,9 @@ module Poisol
       self
     end
 
-    def is_called_before?
-      calling_method = caller[0]
-      is_called = @methods_called.include? calling_method
-      if is_called
-        return true
-      else
-        @omethods_called = @methods_called << calling_method
-        return false
-      end
+    def remove_array_field_calls
+      method_of_array_fileds_of_array = self.methods.select{|method_name|method_name.to_s.start_with?"with_"}
+      @called_methods = @called_methods - method_of_array_fileds_of_array
     end
-
   end
 end

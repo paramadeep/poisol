@@ -15,11 +15,13 @@ module Poisol
         assignment_value = input_value.blank? ? 
           stub_config.response.body.deep_dup : 
           (stub_config.response.body.deep_dup).deep_merge!(input_value[0].stringify_keys)
-        if is_called_before?
+        if @called_methods.include? __method__
           @response.body << assignment_value
         else
           @response.body = [assignment_value]
         end
+        @called_methods << __method__ 
+        remove_array_field_calls
         self
       end
     end
@@ -57,12 +59,17 @@ module Poisol
           define_method(method_name) do |*input_value|
             input_value = input_value[0]
             assignment_value = get_assignment_value actual_field_value,input_value
-            @response.body.last[field_name] = @response.body.last[field_name] << assignment_value
+            if @called_methods.include? __method__
+              @response.body.last[field_name] << assignment_value
+            else
+              @response.body.last[field_name] = [assignment_value]
+            end
+            @called_methods << __method__ 
             self
           end
         end
-
       end
     end
+
   end
 end

@@ -43,7 +43,8 @@ module Poisol
       define_method(method_name) do |*input_value|
         input_value = input_value[0]
         assignment_value = get_assignment_value actual_field_value,input_value
-        @response.body[field_name] = is_called_before? ?  @response.body[field_name] << assignment_value  :[assignment_value] 
+        @response.body[field_name] = @called_methods.include?(__method__) ?  @response.body[field_name] << assignment_value  :[assignment_value] 
+        @called_methods << __method__
         self
       end
 

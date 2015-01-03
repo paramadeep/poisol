@@ -31,9 +31,16 @@ describe Poisol::Stub, "#array" do
   end
 
   it "row array" do
-    Rows.new.has_row.with_item(3).has_row.with_title("abc").with_category("age_group" => "12").with_items([2,3]).build
+    Rows.new.
+      has_row.with_item(3).with_item(4).
+      has_row.with_item(3).with_item(4).
+      has_row.with_title("abc").with_category("age_group" => "12").with_items([2,3]).build
     response = RestClient.get "http://localhost:3030/row"
-    expect(response.body).to eq([{"title"=>"independance","items"=> [1,2,3],"category"=>{"age_group"=>"10"}}, {"title"=>"abc","items"=> [2,3],"category"=>{"age_group"=>"12"}}].to_json)
+    expect(response.body).to eq([
+      {"title"=>"independance","items"=> [3,4],"category"=>{"age_group"=>"10"}}, 
+      {"title"=>"independance","items"=> [3,4],"category"=>{"age_group"=>"10"}},
+      {"title"=>"abc","items"=> [2,3],"category"=>{"age_group"=>"12"}}
+    ].to_json)
   end
 
   it "row array hash_params" do
