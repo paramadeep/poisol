@@ -26,7 +26,7 @@ module Poisol
       actual_req_body = load_as_json actual_req.body
       stub_req_body = load_as_json stub_req.body 
       return false unless actual_req_body.class == stub_req_body.class
-      return true unless actual_req_body == stub_req_body 
+      return true if actual_req_body == stub_req_body 
       return matching_hashes? actual_req_body,stub_req_body if actual_req_body.is_a?(Hash)
       return matching_array? actual_req_body,stub_req_body if actual_req_body.is_a?(Array)
     end
@@ -41,7 +41,6 @@ module Poisol
 
 
     def matching_hashes?(actuals, expected)
-      return false unless actuals.is_a?(Hash)
       return false unless actuals.keys.sort == expected.keys.sort
       actuals.each do |key, actual|
         expected = expected[key]
