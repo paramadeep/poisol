@@ -46,12 +46,13 @@ module Poisol
     end
 
     def has input_hash
-      @response.body.deep_merge! input_hash.camelize_keys
+      @response.body.deep_merge! input_hash.stringify_keys
       self
     end
 
     def is_empty
-      @response.body = stub_config.response.is_column_array or stub_config.response.is_row_array ? [] : {}
+      @response.body = (stub_config.response.is_column_array or stub_config.response.is_row_array) ? [] : {}
+      @is_response_dumped = true
       self
     end
 

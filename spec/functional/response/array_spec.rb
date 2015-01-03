@@ -56,5 +56,10 @@ describe Poisol::Stub, "#array" do
   end
 
 
+  it "empty row array" do
+    Rows.new.is_empty.build
+    response = RestClient.get "http://localhost:3030/row"
+    expect(response.body).to eq([].to_json)
+  end
 
 end
