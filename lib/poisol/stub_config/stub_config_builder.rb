@@ -37,7 +37,7 @@ module Poisol
     private
     def build_request
       load_url
-      @stub_config.request.type = @raw_config_hash["request"]["type"].intern
+      @stub_config.request.type = @raw_config_hash["request"]["type"].downcase
       load_query
       load_request_body
     end
