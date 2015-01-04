@@ -1,4 +1,4 @@
-require_relative "stub/stub"
+require_relative "stub/stub_builder"
 module Poisol 
   class StubFactory
     def build folder
@@ -41,7 +41,7 @@ module Poisol
     end
 
     def create_class class_name,stub_config
-      dynamic_stub_class = Object.const_set class_name,Class.new(Stub)
+      dynamic_stub_class = Object.const_set class_name,Class.new(StubBuilder)
       dynamic_stub_class.set_stub_config stub_config
       dynamic_stub_class.generate_methods_to_alter_sutb
       PoisolLog.info "Generated #{class_name}"
