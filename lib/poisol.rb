@@ -22,4 +22,8 @@ module Poisol
     Server.stop
     reset_data
   end
+
+  def wasted
+    Stubs.unused
+  end
 end

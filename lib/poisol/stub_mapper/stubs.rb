@@ -19,7 +19,14 @@ module Poisol
     def get_match actual_request
       return nil if @stubs.blank?
       matches = @stubs.select{|stub| Poisol::RequestMatcher.matches? actual_request,stub.request}
-      return matches.present? ? matches[0] : nil 
+      return nil unless matches.present? 
+      match = matches[0]
+      match.called_count = match.called_count + 1
+      return match
+    end
+
+    def unused 
+      @stubs.select{|stub| stub.called_count ==0}
     end
 
 
