@@ -26,6 +26,7 @@ module Poisol
         PoisolLog.error "Registered requests are: #{Stubs.all.map{|stub| "\n#{stub.request.to_s}"}.join}\n--end--"
         raise "No match found for request: #{stub_request.to_s} "
       end
+      PoisolLog.info JSON.pretty_generate(stub.response.body)
       return stub.response if stub.present?
     end
 
