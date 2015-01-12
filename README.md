@@ -12,10 +12,10 @@ Hence, avoiding clumsy manual json manipulations and duplications, and keeping t
 Stubbing a http service that provides user identification, gets as simple as 
 
 ```ruby
-  User.new.byName('Joe').hasRole('buyer').build  
+  User.new.ofName('Joe').hasRole('buyer').build  
   # => webmock that would return role as 'buyer' for http call user 'Joe'
   
-  User.new.byName('Mani').hasRole('Manager').build 
+  User.new.ofName('Mani').hasRole('Manager').build 
   # => webmock that would return role as 'Manager' for http call user 'Mani'
   
   User.new.build 
@@ -30,10 +30,12 @@ query:
   name: "Raji"
 response_body:
   '{
-      role: "singer"
+      role : "singer"
   }'
 ```
-Poisol, dynamically generates class called 'User', with methods 'byName' and 'hasRole', which can be used to build as many User's as we need for the tests.
+Poisol, dynamically generates class called 'User', with methods 'ofName' and 'hasRole', which can be used to build as many User's as we need for the tests.
+
+It handles complex request and responses, like array, nested array, array having nested array etc..
 
 The following can be dynamically configured
 - Request 
@@ -42,25 +44,23 @@ The following can be dynamically configured
   - query params
   - request body
 - Response 
-  - code
+  - status code
   - header
   - response body
 
 ## Prepositions
 
-|Preposition| for defining|
-|----:|:----|
-|of|url |
-|for|query params |
-|by|request body filed/array item|
-|having|request body array item field|
-|has|response body field/array item|
-|with|response body array item field|
+| Preposition | for defining                   |
+| ----:       | :----                          |
+| of          | url                            |
+| for         | query params                   |
+| by          | request body filed/array item  |
+| having      | request body array item field  |
+| has         | response body field/array item |
+| with        | response body array item field |
 
 ##ToDo
 * Response code and header config
-* Functional test for query params
-* Refactor Response Handler 
 * Generate Request Handler, based on Response Handler
 * Documentation for 'getting started' and details
 * Test coverage

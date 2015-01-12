@@ -32,7 +32,7 @@ module Poisol
         @response.body[field_name]  = []
         input_hashes = input_value[0]
         input_hashes.each do |input_hash|
-          assignment_value = get_assignment_value actual_field_value.deep_dup,input_hash.stringify_keys
+          assignment_value = get_assignment_value actual_field_value.deep_dup,input_hash
           @response.body[field_name] << assignment_value
         end
         self
