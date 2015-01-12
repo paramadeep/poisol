@@ -18,7 +18,10 @@ module Poisol
     end
 
     def query_matches? actual_req,stub_req 
-      return actual_req.query==stub_req.query
+      return true if  actual_req.query==stub_req.query
+      actual_query = CGI::parse(actual_req.query)
+      stub_query = CGI::parse(stub_req.query)
+      return matching_hashes? actual_query,stub_query
     end
 
     def body_matches? actual_req,stub_req
@@ -43,12 +46,12 @@ module Poisol
     def matching_hashes?(actuals, expected)
       return false unless actuals.keys.sort == expected.keys.sort
       actuals.each do |key, actual|
-        expected = expected[key]
+        expect = expected[key]
 
-        if actual.is_a?(Hash) && expected.is_a?(Hash)
-          return false unless matching_hashes?(actual, expected)
+        if actual.is_a?(Hash) && expect.is_a?(Hash)
+          return false unless matching_hashes?(actual, expect)
         else
-          return false unless expected === actual
+          return false unless expect === actual
         end
       end
       true
