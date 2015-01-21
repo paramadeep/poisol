@@ -1,6 +1,6 @@
 request:
   url: book
-  type: get
+  method: get
   query:
     author: "bharathi"
     name: "doni"

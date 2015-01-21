@@ -1,6 +1,6 @@
 request:
   url: explicit
-  type: post
+  method: post
   body_explicit: true
   body:
     name: "sea"

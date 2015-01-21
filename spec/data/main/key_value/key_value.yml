@@ -1,6 +1,6 @@
 request:
   url: keyvalue
-  type: post
+  method: post
   body:
     name: "sea"
     age: 10

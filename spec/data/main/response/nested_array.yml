@@ -1,6 +1,6 @@
 request:
   url: nested_array
-  type: get
+  method: get
 response:
   body:  '{
     "title": "ind",

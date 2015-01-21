@@ -1,6 +1,6 @@
 request:
   url: row
-  type: get
+  method: get
 response:
   array_type: row 
   body:  '{

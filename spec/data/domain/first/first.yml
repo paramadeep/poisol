@@ -1,6 +1,6 @@
 request:
   url: first
-  type: get
+  method: get
 response:
   body:  '{
     "title": "1"

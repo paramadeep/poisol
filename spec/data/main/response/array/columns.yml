@@ -1,6 +1,6 @@
 request:
   url: column
-  type: get
+  method: get
 response:
   array_type: column
   body: '{
