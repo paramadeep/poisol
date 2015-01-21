@@ -22,12 +22,19 @@ module Poisol
     def get_stub_response stub_request
       stub = Stubs.get_match stub_request
       if stub.blank?
-        PoisolLog.error "^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^No match found for above request"
-        PoisolLog.error "Registered requests are: #{Stubs.all.map{|stub| "\n#{stub.request.to_s}"}.join}\n--end--"
+        log_error stub_request
         raise "No match found for request: #{stub_request.to_s} "
       end
       PoisolLog.info JSON.pretty_generate(stub.response.body)
       return stub.response if stub.present?
+    end
+
+    def log_error request
+      Kernel.puts request.to_s
+      Kernel.puts "^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^No match found for above request"
+      Kernel.puts "Registered requests are: #{Stubs.all.map{|stub| "\n#{stub.request.to_s}"}.join}\n--end--"
+      PoisolLog.error "^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^No match found for above request"
+      PoisolLog.error "Registered requests are: #{Stubs.all.map{|stub| "\n#{stub.request.to_s}"}.join}\n--end--"
     end
 
   end
