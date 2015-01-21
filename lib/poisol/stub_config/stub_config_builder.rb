@@ -29,12 +29,18 @@ module Poisol
 
     def build
       @raw_config_hash = Parse.yaml_file @stub_config.file 
+      load_schema
       build_request
       build_response
       return @stub_config
     end
 
     private
+
+    def load_schema
+        @stub_config.schema = @raw_config_hash["schema"]
+    end
+
     def build_request
       load_url
       @stub_config.request.type = @raw_config_hash["request"]["method"].downcase

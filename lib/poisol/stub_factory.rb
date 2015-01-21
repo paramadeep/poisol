@@ -3,8 +3,10 @@ module Poisol
   class StubFactory
     def build folder
       @folder = folder.chomp '/'
+      @configs = []
       load_domain
       load_stub_configs
+      return @configs
     end
 
     private
@@ -46,6 +48,7 @@ module Poisol
       dynamic_stub_class.generate_methods_to_alter_sutb
       PoisolLog.info "Generated #{class_name}"
       PoisolLog.debug "with methods #{dynamic_stub_class.instance_methods - Object.methods}"
+      @configs << dynamic_stub_class
     end
 
   end

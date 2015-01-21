@@ -1,6 +1,6 @@
 module Poisol
   class StubConfig
-    attr_accessor :response,:request,:is_inline,:file
+    attr_accessor :response,:request,:is_inline,:file,:schema
   end
 
   class RequestConfig
