@@ -3,19 +3,19 @@
 
 #Poisol
 
-For tests suite that uses stubs for http calls, Poisol generates builder objects that could be used to setup http stubs, similar to data builders used to set up test data in database. 
+Poisol provides DSL, with default builders, to stub http endpoints.Similar to Active records and fixtures (factorygirl) used to set test data in database. 
 
-Hence, avoiding clumsy manual json manipulations and duplications, and keeping test stub data setup as part of test's code.
+Hence, avoiding clumsy manipulations and duplications of json's and url and keeping test stub data setup as part of test's code.
 
 ###Example
 
 Stubbing a http service that provides user identification, gets as simple as 
 
 ```ruby
-  User.new.ofName('Joe').hasRole('buyer').build  
+  User.new.of_name('Joe').has_role('buyer').build  
   # => webmock that would return role as 'buyer' for http call user 'Joe'
   
-  User.new.ofName('Mani').hasRole('Manager').build 
+  User.new.of_name('Mani').has_role('Manager').build 
   # => webmock that would return role as 'Manager' for http call user 'Mani'
   
   User.new.build 
@@ -33,11 +33,11 @@ response_body:
       role : "singer"
   }'
 ```
-Poisol, dynamically generates class called 'User', with methods 'ofName' and 'hasRole', which can be used to build as many User's as we need for the tests.
+Poisol, dynamically generates class called 'User', with methods 'of_name' and 'has_role', which can be used to build as many User's as we need for the tests.
 
 It handles complex request and responses, like array, nested array, array having nested array etc..
 
-The following can be dynamically configured
+The following can be dynamically configured, through the builders available
 - Request 
   - url
   - type
@@ -47,6 +47,9 @@ The following can be dynamically configured
   - status code
   - header
   - response body
+
+
+
 
 ## Prepositions
 
