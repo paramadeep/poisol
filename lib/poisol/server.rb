@@ -1,10 +1,25 @@
+require 'webrick'
+
+
 module Poisol 
+
+  class ExtendedServer  < WEBrick::HTTPServlet::AbstractServlet
+    def do_GET req,res
+      stub_response = Poisol::ResponseMapper.map(req)
+      res.status = stub_response.status
+      res.body = stub_response.body.to_json
+      res.content_type = 'application/json'
+    end
+    alias do_DELETE do_GET
+    alias do_POST do_GET
+    alias do_PUT do_GET
+  end
+
   module Server
     extend self
 
     def start port
       PoisolLog.info "Starting server...  as http://localhost:#{port}"
-      require 'webrick'
       @server =  WEBrick::HTTPServer.new :Port => port, :Logger => log, :AccessLog => access_log
       @port = port
       attach_shutdown
@@ -18,12 +33,7 @@ module Poisol
     end
 
     def attach_request_handling
-      @server.mount_proc '/' do |req, res|
-        stub_response = ResponseMapper.map(req)
-        res.status = stub_response.status
-        res.body = stub_response.body.to_json
-        res.content_type = 'application/json'
-      end
+      @server.mount '/', ExtendedServer
     end
 
     def attach_shutdown 

@@ -1,0 +1,5 @@
+request:
+  url: 'delete_url'
+  method: delete
+response:
+  body: '{"hi": 1}'

@@ -1,8 +1,8 @@
+require 'pry'
 require "rspec/expectations"
 require 'rest_client'
 
 require_relative '../lib/poisol'
-require 'pry'
 
 require 'simplecov'
 SimpleCov.formatter = SimpleCov::Formatter::MultiFormatter[

@@ -116,14 +116,22 @@ RSpec.configure do |config|
 
 end
 ```
+### Port
+  By default, on Poisol.start will start the stub server in port localhost:3030, we can change the default port on server start by Poisol.start(:port=>3333)
+
+#### Sub Domain
+  Given all the external services stubbed will be handled 
+
 ## Builders
 ####URL  
   ```yml
   #user.yml
   request:
-    url: http://authentication.service:80/user/{id|2}
+    url: user/{id|2}
     ...
 ```
+
+
 
 ##ToDo
 * Make header configurable 
