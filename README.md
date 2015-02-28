@@ -49,17 +49,6 @@ The following can be dynamically configured, through the builders available
   - header*
   - response body
 
-## Prepositions
-
-| Preposition | for defining                   |
-| ----:       | :----                          |
-| of          | url                            |
-| for         | query params                   |
-| by          | request body filed/array item  |
-| having      | request body array item field  |
-| has         | response body field/array item |
-| with        | response body array item field |
-
 ##Usage
 
 In your project Gemfile add
@@ -80,8 +69,8 @@ Before do
   if $poisol_loaded.blank?
     Poisol.start #starts the stub server
     Poisol.load "<--location of the stub configs folder-->" #loads the configs as stub builders 
-    #Poisol.load "features/stub_data/payment_gateway"
-    #Poisol.load "features/stub_data/exchange_service"
+    #Poisol.load "stubs/cost"
+    #Poisol.load "stubs/exchange_service"
     $poisol_loaded = true
   end
   Poisol.reset_data #clears the stubs configured prior, hence every test is independent
@@ -106,8 +95,8 @@ RSpec.configure do |config|
   config.before(:suite) do
     Poisol.start #starts the stub server
     Poisol.load "<--location of the stub configs folder-->" #loads the configs as stub builders 
-    #Poisol.load "spec/stub_data/payment_gateway"
-    #Poisol.load "spec/stub_data/exchange_service"
+    #Poisol.load "stubs/cost"
+    #Poisol.load "stubs/exchange_service"
   end
 
   config.after(:suite) do
@@ -119,8 +108,41 @@ end
 ### Port
   By default, on Poisol.start will start the stub server in port localhost:3030, we can change the default port on server start by Poisol.start(:port=>3333)
 
-#### Sub Domain
-  Given all the external services stubbed will be handled 
+####Stubs  Config 
+  For each service that is stubbed, configuration of all endpoints are kept inside corresponding service's folder.
+```ruby 
+  Poisol.load "stubs/cost"
+```
+```
+.
+── stubs
+   ├── cost #cost service servers two enpoints. Gross Cost and Net Cost.
+   │   ├── domain.yml
+   │   └── gross_cost.yml
+   │   └── net_cost.yml
+   ├── exchange #excahange service serves two endpoints. Rupee and Yen.
+   │   ├── domain.yml
+   │   └── rupee.yml
+   │   └── yen.yml
+   └── sms #SMS service service serves one endpoint. Send SMS.
+       ├── domain.yml
+       └── send_sms.yml
+
+```
+#### Domain
+  In the above example each service folder contains a file called "domain.yml" which contain stub domain information of a specific service.
+
+```yml
+#stubs/cost/domain.yml
+sub_domain: "cost"
+```
+hence cost service will be served at url, "http://localhost:3030/cost"
+
+```yml
+#stubs/exchange/domain.yml
+sub_domain: "exchange/currency"
+```
+hence exchange service will be served at url, "http://localhost:3030/exchange/currency"
 
 ## Builders
 ####URL  
@@ -130,6 +152,17 @@ end
     url: user/{id|2}
     ...
 ```
+
+## Prepositions
+
+| Preposition | for defining                   |
+| ----:       | :----                          |
+| of          | url                            |
+| for         | query params                   |
+| by          | request body filed/array item  |
+| having      | request body array item field  |
+| has         | response body field/array item |
+| with        | response body array item field |
 
 
 
