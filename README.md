@@ -2,10 +2,12 @@
 [![Build Status](https://travis-ci.org/paramadeep/poisol.svg?branch=master)](https://travis-ci.org/paramadeep/poisol) [![Dependency Status](https://gemnasium.com/paramadeep/poisol.svg)](https://gemnasium.com/paramadeep/poisol) [![Code Climate](https://codeclimate.com/github/paramadeep/poisol/badges/gpa.svg)](https://codeclimate.com/github/paramadeep/poisol) 
 
 #Poisol
+Poisol provides builder DSL to stub http endpoints. Similar to models and fixtures (factorygirl) used to set test data in database. 
 
-Poisol provides builder DSL to stub http endpoints.Similar to Active records and fixtures (factorygirl) used to set test data in database. 
+##Why yet another stub
+Using other stub frameworks, had to do clumsy manipulation of the url's and json's to setup different scenarios for tests. 
 
-Hence, avoiding clumsy manual manipulations and duplications of url's & json, and keeping test stub data setup as part of test's code.
+Poisol is a logical evolution in an attempt to define base stub data, and a most flexible/precise DSL to specify the required variation. 
 
 ###Example
 
