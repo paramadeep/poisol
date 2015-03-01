@@ -70,10 +70,12 @@ Before do
   if $poisol_loaded.blank?
     Poisol.start #starts the stub server
     Poisol.load "stubs/cost"
-    #Poisol.load "<--location of the stub configs folder-->" #loads the configs as stub builders 
+    #Poisol.load "<--location of the stub configs folder-->" 
+    #loads the configs as stub builders 
     $poisol_loaded = true
   end
-  Poisol.reset_data #clears the stubs configured prior, hence every test is independent
+  Poisol.reset_data
+  #clears the stubs configured prior, hence every test is independent
 end
 
 at_exit do
@@ -89,13 +91,15 @@ require 'poisol'
 RSpec.configure do |config|
 
   config.before(:each) do
-    Poisol.reset_data #clears the stubs configured prior, hence every test is independent
+    Poisol.reset_data 
+    #clears the stubs configured prior, hence every test is independent
   end
 
   config.before(:suite) do
     Poisol.start #starts the stub server
     Poisol.load "stubs/cost"
-    #Poisol.load "<--location of the stub configs folder-->" #loads the configs as stub builders 
+    #Poisol.load "<--location of the stub configs folder-->" 
+    #loads the configs as stub builders 
   end
 
   config.after(:suite) do
@@ -113,7 +117,8 @@ Poisol.start(:port=>3333) #=> Stub server runs with address http://localhost:333
 ####Stubs  Config 
   For each service that is stubbed, configuration of all endpoints are kept inside corresponding service's folder.
 ```ruby 
-    Poisol.load "<--location of the stub configs folder-->" #loads the configs as stub builders 
+    Poisol.load "<--location of the stub configs folder-->"
+    #loads the configs as stub builders 
     #Poisol.load "stubs/cost"
     #Poisol.load "stubs/exchange"
     #Poisol.load "stubs/sms"
@@ -247,12 +252,12 @@ GrossCost.new.has_currency("pound").build
 ```
 Using "has" method which takes a hash-map as parameter, all or partial list of fields can be modified.
 ```ruby
-GrossCost.new.has({:cost=>10,:currency=>"dollar"}).build 
+GrossCost.new.has(:cost=>10,:currency=>"dollar").build 
 #=> builds localhost:3030/cost/gross which returns {"cost":10,"currency":"dollar"}
-GrossCost.new.has({:currency=>"pound"}).build 
+GrossCost.new.has(:currency=>"pound").build 
 #=> builds localhost:3030/cost/gross which returns {"cost":2,"currency":"pound"}
 ```
-Modifiers for complex scenarios like nested arrays, array object are also can be handled
+######[Handling array in response body]https://github.com/paramadeep/poisol/wiki/Response-Body)
 ###Request Body
 ```yml
 #cost/gross_cost.yml
@@ -277,12 +282,12 @@ GrossCost.new.by_cost(2).build
 ```
 Using "by" method which takes a hash-map as parameter, all or partial list of fields can be modified.
 ```ruby
-GrossCost.new.by({:cost=>10,:article=>"tooth_paste"}).build 
+GrossCost.new.by(:cost=>10,:article=>"tooth_paste").build 
 #=> builds post localhost:3030/cost/gross which takes {"aticle":"tooth_paste","cost"=>10}
-GrossCost.new.by({:cost=>2}).build 
+GrossCost.new.by(:cost=>2).build 
 #=> builds post localhost:3030/cost/gross which takes {"aticle":"soap","cost"=>2}
 ```
-Modifiers for complex scenarios like nested arrays, array object are also can be handled
+######[Handling array in request body](https://github.com/paramadeep/poisol/wiki/Request-Body)
 
 ## Prepositions
 
