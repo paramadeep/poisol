@@ -15,13 +15,13 @@ Stubbing a http service that provides user identification, gets as simple as
 
 ```ruby
   User.new.for_name('Joe').has_role('buyer').build  
-  # => stub that would return with role as 'buyer' for http call for user 'Joe'
+  # => stub http://localhost:3030/user?name=Joe that returns {"role":"buyer"}
   
   User.new.for_name('Mani').has_role('Manager').build 
-  # => stub that would return with role as 'Manager' for http call for user 'Mani'
+  # => stub http://localhost:3030/user?name=Mani that returns {"role":"Manager"}
   
   User.new.build 
-  # => stub that would return with role as 'Singer' for http call for user 'Raji'
+  # => stub http://localhost:3030/user?name=Raji that returns {"role":"Singer"}
 ```
 given a minimal configuration
 
