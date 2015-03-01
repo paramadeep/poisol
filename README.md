@@ -28,7 +28,7 @@ given a minimal configuration
 ```yaml
 #user.yml
 request:
-  url: http://authentication.service:80/user
+  url: user
   query: 
     name: "Raji"
 response:
@@ -257,7 +257,7 @@ GrossCost.new.has(:cost=>10,:currency=>"dollar").build
 GrossCost.new.has(:currency=>"pound").build 
 #=> builds localhost:3030/cost/gross which returns {"cost":2,"currency":"pound"}
 ```
-######[Handling array in response body]https://github.com/paramadeep/poisol/wiki/Response-Body)
+######[Handling array in response body](https://github.com/paramadeep/poisol/wiki/Response-Body)
 ###Request Body
 ```yml
 #cost/gross_cost.yml
