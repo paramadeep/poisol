@@ -124,18 +124,23 @@ Poisol.start(:port=>3333)
     #Poisol.load "stubs/exchange"
     #Poisol.load "stubs/sms"
 ```
+The below stubs folder will yield
+
+1. Cost service servers two enpoints. Gross Cost and Net Cost.
+2. Excahange service serves two endpoints. Rupee and Yen. 
+3. SMS service service serves one endpoint. Send SMS. 
 ```
 .
 ── stubs
-   ├── cost #cost service servers two enpoints. Gross Cost and Net Cost.
+   ├── cost 
    │   ├── domain.yml
    │   └── gross_cost.yml
    │   └── net_cost.yml
-   ├── exchange #excahange service serves two endpoints. Rupee and Yen.
+   ├── exchange 
    │   ├── domain.yml
    │   └── rupee.yml
    │   └── yen.yml
-   └── sms #SMS service service serves one endpoint. Send SMS.
+   └── sms 
        ├── domain.yml
        └── send_sms.yml
 
