@@ -111,7 +111,8 @@ end
 ### Port
   By default, on Poisol.start will start the stub server in port 3030, we can change the default port.
 ```ruby
-Poisol.start(:port=>3333) #=> Stub server runs with address http://localhost:3333
+Poisol.start(:port=>3333)
+#=> Stub server runs with address http://localhost:3333
 ```
 
 ####Stubs  Config 
@@ -222,11 +223,13 @@ response:
 ```
 When no status is mentioned, the default status is 200
 ```ruby
-GrossCost.new.build #=> builds localhost:3030/cost/gross which returns status 200
+GrossCost.new.build 
+#=> builds localhost:3030/cost/gross which returns status 200
 ```
 Using "status" method, status value is modified 
 ```ruby
-GrossCost.new.status(404).build #=> builds localhost:3030/cost/gross which returns status 404
+GrossCost.new.status(404).build 
+#=> builds localhost:3030/cost/gross which returns status 404
 ```
 ###Response Body 
 ```yml
