@@ -311,5 +311,8 @@ GrossCost.new.by(:cost=>2).build
 
 
 ##ToDo
+* Allow regex defenition and matching of request
+* Use part of request as part of response, dynamically.
+* Setting response for multiple hits.
 * Make header configurable 
 * Ensure contract mentioned cannot be changed
