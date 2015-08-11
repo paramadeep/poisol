@@ -1,7 +1,7 @@
 Gem::Specification.new do |s|
   s.name = 'poisol'
   s.version = '0.1.8'
-  s.date = '2015-02-20'
+  s.date = '2015-08-11'
   s.summary = 'HTTP stub as DSL'
   s.description = 'HTTP stub as DSL'
   s.authors = ["Deepak"]
