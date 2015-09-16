@@ -217,8 +217,35 @@ GrossCost.new.for({article=>"tooth_paste",:area=>"mumbai"}).build
 #=> builds  localhost:3030/cost/gross?article=tooth_paste&area=mumbai
 GrossCost.new.for({:area=>"mumbai"}).build 
 #=> builds  localhost:3030/cost/gross?article=soap&area=mumbai
-``` 
-###Status 
+```
+If some of your query params are optional, you can require them to be explicitly declared using the `query_explicit` directive.
+```yml
+request:
+  url: book_explicit
+  method: get
+  query_explicit: true
+  query:
+    author: "bharathi"
+    name: "doni"
+response:
+  body:  '{
+    "title": "independance",
+    "category": {
+      "age_group": "10",
+      "genre": "action",
+      "publisher": {
+        "name": "summa",
+        "place":"erode"
+      }
+    }
+  }'
+```
+```ruby
+BookExplicit.new.for_author('bha').build()
+#=> builds  http://localhost:3030/book_explicit?author=bha
+```
+Note that the `name` query parameter is not explicitly declared and is therefore ignored.
+### Status
 ```yml
 #cost/gross_cost.yml
 request:
