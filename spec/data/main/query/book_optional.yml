@@ -1,0 +1,18 @@
+request:
+  url: book_optional
+  method: get
+  query_explicit: true
+  query:
+    author: "bharathi"
+response:
+  body:  '{
+    "title": "independance",
+    "category": {
+      "age_group": "10",
+      "genre": "action",
+      "publisher": {
+        "name": "summa",
+        "place":"erode"
+      }
+    }
+  }'

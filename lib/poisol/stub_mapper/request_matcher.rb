@@ -19,6 +19,7 @@ module Poisol
 
     def query_matches? actual_req,stub_req 
       return true if  actual_req.query==stub_req.query
+      return false if (actual_req.query.blank? || stub_req.query.blank?)
       actual_query = CGI::parse(actual_req.query)
       stub_query = CGI::parse(stub_req.query)
       return matching_hashes? actual_query,stub_query
