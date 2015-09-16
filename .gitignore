@@ -1,6 +1,7 @@
 pkg
 coverage
 log
+.idea
 *.swp
 *.swo
 
