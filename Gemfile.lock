@@ -1,8 +1,7 @@
 PATH
   remote: .
   specs:
-    poisol (0.1.8)
-      activesupport (>= 4.2.0)
+    poisol (0.1.9)
 
 GEM
   remote: http://rubygems.org/
@@ -59,6 +58,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  activesupport (>= 4.2.0)
   poisol!
   pry
   rake
