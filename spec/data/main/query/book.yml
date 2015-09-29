@@ -2,8 +2,8 @@ request:
   url: book
   method: get
   query:
-    author: "bharathi"
-    name: "doni"
+    author_id: "bharathi"
+    author_name: "doni"
 response:
   body:  '{
     "title": "independance",
