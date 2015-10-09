@@ -57,7 +57,7 @@ module Poisol
     end
 
     def  for input_hash
-      @request.query.deep_merge! input_hash.camelize_keys
+      @request.query.deep_merge! input_hash.stringify_keys
       self
     end
 
