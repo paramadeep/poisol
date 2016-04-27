@@ -3,7 +3,7 @@ module Poisol
 
     def prepare_response_body
       return if @stub_config.response.body.blank?
-      if  @stub_config.response.is_column_array or @stub_config.response.is_row_array 
+      if  @stub_config.response.is_column_array or @stub_config.response.is_row_array
         make_methods_to_alter_response_array
       else
         make_methods_to_alter_response_object 

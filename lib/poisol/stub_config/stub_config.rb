@@ -8,6 +8,6 @@ module Poisol
   end
 
   class ResponseConfig
-    attr_accessor :body,:is_column_array,:is_row_array
+    attr_accessor :body,:is_column_array,:is_row_array, :header
   end
 end

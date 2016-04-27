@@ -77,6 +77,14 @@ module Poisol
     def build_response
       @stub_config.is_inline ? load_inline_response_body  : load_exploaded_response_body
       load_resonse_array_type
+      load_header
+    end
+
+    def load_header
+      return if @raw_config_hash["response"].blank?
+      header = @raw_config_hash["response"]["header"]
+      return if header.blank?
+      @stub_config.response.header = header
     end
 
     def load_resonse_array_type

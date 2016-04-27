@@ -16,13 +16,17 @@ module Poisol
 
     def init_response
       @response = Response.new
-      if  stub_config.response.is_column_array or stub_config.response.is_row_array 
-        @response.body = [stub_config.response.body.deep_dup] 
+      if stub_config.response.is_column_array or stub_config.response.is_row_array
+        @response.body = [stub_config.response.body.deep_dup]
       else
         @response.body = stub_config.response.body.deep_dup
       end
       @response.status = 200
+
       @response.header = {'Content-Type' => 'application/json'}
+      if (stub_config.response.header)
+        @response.header.merge! stub_config.response.header
+      end
     end
 
     def set_dumb_response response_file
@@ -31,10 +35,10 @@ module Poisol
       self
     end
 
-    def get_assignment_value actual_field_value,input_value
-      if  actual_field_value.class.to_s == "Hash" 
+    def get_assignment_value actual_field_value, input_value
+      if actual_field_value.class.to_s == "Hash"
         input_value = {} if input_value.blank?
-        actual_field_value.deep_merge(input_value.stringify_keys) 
+        actual_field_value.deep_merge(input_value.stringify_keys)
       else
         input_value
       end
@@ -56,18 +60,18 @@ module Poisol
       self
     end
 
-    def  for input_hash
+    def for input_hash
       @request.query.deep_merge! input_hash.stringify_keys
       self
     end
 
-    def  status input
+    def status input
       @response.status = input
       self
     end
 
     def remove_array_field_calls
-      method_of_array_fileds_of_array = self.methods.select{|method_name|method_name.to_s.start_with?"with_"}
+      method_of_array_fileds_of_array = self.methods.select { |method_name| method_name.to_s.start_with? "with_" }
       @called_methods = @called_methods - method_of_array_fileds_of_array
     end
   end
