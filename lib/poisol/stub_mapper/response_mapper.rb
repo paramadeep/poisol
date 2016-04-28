@@ -5,15 +5,14 @@ module Poisol
     def map webrick_request
       stub_request = get_stub_request webrick_request
       PoisolLog.info stub_request.to_s
-      stub_response = get_stub_response stub_request
+      get_stub_response stub_request
     end
 
     def get_stub_request webrick_request
       stub_request = Request.new 
       stub_request.type = webrick_request.request_method.downcase
-      uri = webrick_request.request_uri
-      stub_request.url = uri.query.blank? ? uri.to_s : uri.to_s.sub(uri.query,"").sub("?","")
-      stub_request.query = webrick_request.query_string 
+      stub_request.url = webrick_request.request_uri.path
+      stub_request.query = webrick_request.query_string
       stub_request.body = webrick_request.body
       stub_request
     end
@@ -26,7 +25,7 @@ module Poisol
         raise "No match found for request: #{stub_request.to_s} "
       end
       PoisolLog.info JSON.pretty_generate(stub.response.body)
-      return stub.response if stub.present?
+      stub.response if stub.present?
     end
 
     def log_error request

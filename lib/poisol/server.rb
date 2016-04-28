@@ -8,7 +8,7 @@ module Poisol
       stub_response = Poisol::ResponseMapper.map(req)
       res.status = stub_response.status
       res.body = stub_response.body.to_json
-      res.content_type = 'application/json'
+      res.header.merge! stub_response.header
     end
     alias do_DELETE do_GET
     alias do_POST do_GET
@@ -49,7 +49,7 @@ module Poisol
     def access_log
       log_file = File.open 'log/poisol_webrick.log', 'a+'
       [
-        [log_file, WEBrick::AccessLog::COMBINED_LOG_FORMAT],
+        [log_file, "#{WEBrick::AccessLog::COMBINED_LOG_FORMAT} %T"],
       ]
     end
 

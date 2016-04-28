@@ -10,7 +10,7 @@ module Poisol
         sub_domain  = base_hash["sub_domain"]
         path = "/#{sub_domain}" if sub_domain.present?
       end
-      @full_url = "#{Server.base_url}#{ path.present? ? path: ''}"
+      @full_url = "#{ path.present? ? path: ''}"
     end
 
   end
