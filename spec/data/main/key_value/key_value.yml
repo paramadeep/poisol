@@ -2,7 +2,10 @@ request:
   url: keyvalue
   method: post
   body:
-    name: "sea"
+    name:
+      first: sea
+      last: gull
     age: 10
+    extra_info: 'none'
 response:
   body: '{"hi": 1}'

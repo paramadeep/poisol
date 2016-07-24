@@ -18,7 +18,7 @@ Gem::Specification.new do |s|
   s.add_development_dependency 'pry'
   s.add_development_dependency 'rubygems-tasks'
   s.add_development_dependency 'simplecov'
-  s.add_development_dependency'rest-client'
+  s.add_runtime_dependency'rest-client', '~> 2.0.0'
   s.add_runtime_dependency 'webrick'
   s.add_runtime_dependency 'activesupport','~> 4.2.0'
 end

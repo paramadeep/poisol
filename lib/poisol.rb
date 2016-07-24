@@ -1,4 +1,5 @@
 require 'webrick'
+require 'rest-client'
 require 'active_support/all'
 require 'poisol/all'
 
