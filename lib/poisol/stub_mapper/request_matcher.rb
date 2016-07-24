@@ -1,6 +1,6 @@
 module Poisol 
   module  RequestMatcher
-    extend self 
+    extend self
 
     def matches? actual_req,stub_req 
       type_matches?(actual_req,stub_req) &&

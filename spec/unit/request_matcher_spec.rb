@@ -1,4 +1,3 @@
-require_relative "../../lib/poisol/stub_mapper/request_matcher"
 describe Poisol::RequestMatcher, "request matching" do
   it "match hashes" do
     hash1 = {"store_group_id"=>["5008"], "date"=>["2029-12-28"], "pr_discount_percentage"=>["0.00000"]}

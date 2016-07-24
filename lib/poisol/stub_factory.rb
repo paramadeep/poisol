@@ -1,5 +1,4 @@
-require_relative "stub/stub_builder"
-module Poisol 
+module Poisol
   class StubFactory
     def build folder
       @folder = folder.chomp '/'

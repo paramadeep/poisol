@@ -1,6 +1,10 @@
+lib = File.expand_path('../lib', __FILE__)
+$LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
+require 'poisol/version'
+
 Gem::Specification.new do |s|
   s.name = 'poisol'
-  s.version = '0.1.10'
+  s.version = Poisol::VERSION
   s.date = '2016-04-28'
   s.summary = 'HTTP stub as DSL'
   s.description = 'HTTP stub as DSL'
@@ -14,7 +18,7 @@ Gem::Specification.new do |s|
   s.add_development_dependency 'pry'
   s.add_development_dependency 'rubygems-tasks'
   s.add_development_dependency 'simplecov'
-  s.add_development_dependency 'webrick'
   s.add_development_dependency'rest-client'
-  s.add_development_dependency 'activesupport','>= 4.2.0'
+  s.add_runtime_dependency 'webrick'
+  s.add_runtime_dependency 'activesupport','~> 4.2.0'
 end
