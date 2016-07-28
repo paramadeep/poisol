@@ -1,8 +1,4 @@
-require_relative "build_stub"
-require_relative "stub_builder_class"
-require_relative "stub_builder_instance"
-
-module Poisol 
+module Poisol
   class StubBuilder
     include BuildStub
     include StubInstance

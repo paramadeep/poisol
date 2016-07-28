@@ -25,11 +25,7 @@ module Parse
   end
 
   def hash_to_concatenated_key_value hash
-    concatenated_body = ""
-    hash.each do |key,value|
-      concatenated_body = concatenated_body + "#{key}=#{value}&"
-    end
-    concatenated_body.chomp('&')
+    RestClient::Utils.encode_query_string hash
   end
 
 end

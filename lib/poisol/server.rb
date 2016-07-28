@@ -1,7 +1,4 @@
-require 'webrick'
-
-
-module Poisol 
+module Poisol
 
   class ExtendedServer  < WEBrick::HTTPServlet::AbstractServlet
     def do_GET req,res

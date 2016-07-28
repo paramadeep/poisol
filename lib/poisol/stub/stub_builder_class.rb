@@ -1,11 +1,6 @@
-require_relative "request/query_builder"
-require_relative "request/request_body_builder"
-require_relative "request/url_builder"
-require_relative "response/response_body_builder"
-require_relative "response/status_builder"
-module Poisol 
+module Poisol
   module StubClassBuilder
-    include RequestBodyBuilder 
+    include RequestBodyBuilder
     include ResponseBodyBuilder 
     include UrlBuilder 
     include QueryBuilder 

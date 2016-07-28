@@ -1,5 +1,4 @@
-require_relative './request_matcher'
-module Poisol 
+module Poisol
   module Stubs
     extend self
 
@@ -7,9 +6,9 @@ module Poisol
       @stubs
     end
 
-    def add stub 
+    def add stub
       @stubs = [] if @stubs.blank?
-      @stubs << stub 
+      @stubs << stub
     end
 
     def reset
@@ -18,14 +17,14 @@ module Poisol
 
     def get_match actual_request
       return nil if @stubs.blank?
-      matches = @stubs.select{|stub| Poisol::RequestMatcher.matches? actual_request,stub.request}
-      return nil unless matches.present? 
+      matches = @stubs.select{|stub| RequestMatcher.matches? actual_request,stub.request}
+      return nil unless matches.present?
       match = matches.last
       match.called_count = match.called_count + 1
       return match
     end
 
-    def unused 
+    def unused
       @stubs.select{|stub| stub.called_count ==0}
     end
 
