@@ -1,15 +1,15 @@
 
 [![Build Status](https://travis-ci.org/paramadeep/poisol.svg?branch=master)](https://travis-ci.org/paramadeep/poisol) [![Dependency Status](https://gemnasium.com/paramadeep/poisol.svg)](https://gemnasium.com/paramadeep/poisol) [![Code Climate](https://codeclimate.com/github/paramadeep/poisol/badges/gpa.svg)](https://codeclimate.com/github/paramadeep/poisol) 
 
-#Poisol
+# Poisol
 Poisol provides builder DSL to stub http endpoints. Similar to models and fixtures (factorygirl) used to set test data in database. 
 
-##Why yet another stub
+## Why yet another stub
 Using other stub frameworks, had to do clumsy manipulation of the url's and json's to setup different scenarios for tests. 
 
 Poisol is a logical evolution in an attempt to define base stub data, and a most flexible/precise DSL to specify the required variation. 
 
-###Example
+### Example
 
 Stubbing a http service that provides user identification, gets as simple as 
 
@@ -50,7 +50,7 @@ The following can be dynamically configured, through the builders available
   - header*
   - response body
 
-##Usage
+## Usage
 
 In your project Gemfile add
 
@@ -58,7 +58,7 @@ In your project Gemfile add
 gem 'poisol'
 ```
 
-###Cucumber
+### Cucumber
 
 ```ruby
 #features/support/env.rb
@@ -82,7 +82,7 @@ at_exit do
   Poisol.stop
 end
 ```
-###Rspec
+### Rspec
 
 ```ruby
 #spec/spec_helper.rb
@@ -170,7 +170,7 @@ hence exchange service will be served at url, "http://localhost:3030/exchange/cu
  ```
  By default, without any modifiers mentioned, builder builds stub for the endpoint with the default values as mentioned in the configuration file.
 
-###URL  
+### URL  
   ```yml
   #cost/gross_cost.yml
   request:
@@ -189,7 +189,7 @@ Using "of_[place_holder]" method corresponding value can be modified.
 GrossCost.new.of_article("tooth_paste").of_area("mumbai").build 
 #=> builds localhost:3030/cost/gross/tooth_paste/mumbai
 ``` 
-###Query Params
+### Query Params
 ```yml
 #cost/gross_cost.yml
 request:
@@ -263,7 +263,7 @@ Using "status" method, status value is modified
 GrossCost.new.status(404).build 
 #=> builds localhost:3030/cost/gross which returns status 404
 ```
-###Response Body 
+### Response Body 
 ```yml
 #cost/gross_cost.yml
 request:
@@ -292,8 +292,8 @@ GrossCost.new.has(:cost=>10,:currency=>"dollar").build
 GrossCost.new.has(:currency=>"pound").build 
 #=> builds localhost:3030/cost/gross which returns {"cost":2,"currency":"pound"}
 ```
-######[Handling array in response body](https://github.com/paramadeep/poisol/wiki/Response-Body)
-###Request Body
+###### [Handling array in response body](https://github.com/paramadeep/poisol/wiki/Response-Body)
+### Request Body
 ```yml
 #cost/gross_cost.yml
 request:
@@ -322,7 +322,7 @@ GrossCost.new.by(:cost=>10,:article=>"tooth_paste").build
 GrossCost.new.by(:cost=>2).build 
 #=> builds post localhost:3030/cost/gross which takes {"aticle":"soap","cost"=>2}
 ```
-######[Handling array in request body](https://github.com/paramadeep/poisol/wiki/Request-Body)
+###### [Handling array in request body](https://github.com/paramadeep/poisol/wiki/Request-Body)
 
 ## Prepositions
 
@@ -337,7 +337,7 @@ GrossCost.new.by(:cost=>2).build
 
 
 
-##ToDo
+## ToDo
 * Allow regex defenition and matching of request
 * Use part of request as part of response, dynamically.
 * Setting response for multiple hits.
